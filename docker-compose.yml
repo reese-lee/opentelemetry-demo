@@ -506,13 +506,13 @@ services:
 
   # Recommendation service
   recommendationservice:
-    image: ${IMAGE_NAME}:${DEMO_VERSION}-recommendationservice
+    # image: ${IMAGE_NAME}:${DEMO_VERSION}-recommendationservice
     container_name: recommendation-service
     build:
       context: ./
       dockerfile: ./src/recommendationservice/Dockerfile
-      cache_from:
-        - ${IMAGE_NAME}:${IMAGE_VERSION}-recommendationservice
+      # cache_from:
+        # - ${IMAGE_NAME}:${IMAGE_VERSION}-recommendationservice
     deploy:
       resources:
         limits:
