@@ -37,7 +37,24 @@ After completing this workshop, you ~~hopefully will~~ should:
 
 These are the labs that you will be completing in this workshop. Each lab includes at least one task. 
 
-### Lab 1 The OpenTelemetry Collector
+### Getting started
+
+#### Create a new codespace
+To begin, create a new codespace from this repo. A codespace is a dev environment that's hosted in the cloud. Click the green “Code” button > Codespaces > + > Create a codespace on renderatl. This will take a couple minutes. 
+
+**Pro tip**: Keep a tab open with this README open, since there’ll be snippets you can copy and paste for our workshop in here. 
+
+Once that’s done and you are able to type in your codespace terminal, build and start the app by running this command: `docker compose up`. This will take another few minutes.
+
+#### Create a New Relic account, and get your license key
+1. Head to this link: https://newrelic.com/signup.
+2. Use a personal email to sign up for a free account.
+3. Copy your license key by going [here](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher), or by clicking your user name > API Keys > INGEST -  LICENSE > Copy key. 
+4. Paste your key somewhere easily accessible, such as in a Stickie or a notepad app.
+
+You are now ready to begin the labs! 
+
+### Lab 1: The OpenTelemetry Collector
 In this lab, you will:
 
 * learn about the OpenTelemetry Collector
