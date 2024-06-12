@@ -8,11 +8,18 @@
 ## Note: the spanmetrics exporter must be included in the exporters array
 ## if overriding the traces pipeline.
 ##
-#  exporters:
-#    otlphttp/example:
-#      endpoint: <your-endpoint-url>
-#
-#  service:
-#    pipelines:
-#      traces:
-#        exporters: [spanmetrics, otlphttp/example]
+
+exporters:
+  otlphttp/newrelic:
+    endpoint: https://otlp.nr-data.net:4318
+    headers:
+      api-key: YOUR_LICENSE_KEY
+
+service:
+  pipelines:
+    traces:
+      exporters: [otlphttp/newrelic, spanmetrics]
+    metrics:
+      exporters: [otlphttp/newrelic]
+    logs:
+      exporters: [otlphttp/newrelic]
