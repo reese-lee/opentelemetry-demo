@@ -68,7 +68,7 @@ For this task, you will configure an exporter to ship data to your New Relic acc
 1. In your codespace, head to this directory: `src > otelcollector`.
 2. You’ll see two Collector configuration files. Click on this file to open it in your codespace: `otelcol-config-extras.yml`.
 3. On line 16, replace `YOUR_LICENSE_KEY` with your own [New Relic account license key](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher). Learn more about New Relic keys in our [documentation](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#overview-keys).
-4. Run `docker compose up` to build and run the app.
+4. Restart the app by hitting `control + c` and then running `docker compose up`.
 5. Head to [your New Relic account](https://one.newrelic.com/) to look for your data!
 
 #### Task: Query your data
@@ -86,7 +86,7 @@ Open a new codepsace terminal, and run the following command to view only the Co
 #### Task: Look for the error in the Collector logs
 1. In your codespace, open up this file: `src > otelcollector > otelcol-config-extras.yml`.
 2. On line 16, modify your license key by adding an extra letter or number.
-3. Restart the app by hitting `control + c` and then `docker compose up`.
+3. Restart the app by hitting `control + c` and then running `docker compose up`.
 4. Using the Collector logs, can you spot any clues to the problem that was caused by step 2? (Hint: you should see a 403 error.) 
 
 ### Lab 2: Instrumentation
@@ -105,7 +105,7 @@ As the PM for `recommendationservice`, you want to add a custom attribute to col
 ```yaml
 span.set_attribute("app.filtered_products.list", prod_list)
 ```
-3. Restart the app by hitting `control + c` and then `docker compose up`.
+3. Restart the app by hitting `control + c` and then running `docker compose up`.
 4. Query for your new custom attribute in New Relic: `SELECT * FROM Span WHERE app.filtered_products.list IS NOT NULL SINCE 10 minutes ago` 
 
 ### Lab 3: Troubleshooting: Diagnose an issue with New Relic
@@ -113,7 +113,7 @@ The OpenTelemetry Demo comes with several [feature flags](https://opentelemetry.
 
 1. Open this file: `src > flagd > demo.flagd.json`.
 2. On line 11, change the `defaultVariant` value to `on`. This feature flag generates an error for `GetProduct` requests with the product id, OLJCESPC7Z.
-3. Restart the app by hitting `control + c` and then `docker compose up`.
+3. Restart the app by hitting `control + c` and then running `docker compose up`.
 4. After a couple of minutes, head to `productcatalogservice` in your New Relic account and use the Summary page to find the issue. (Hint: Check the error rate chart on the Summary page. You can also use the [Errors inbox](https://docs.newrelic.com/docs/errors-inbox/errors-inbox/) feature.) 
 
 ### Lab 4: Sampling: Configure a probabilistic sampler
@@ -133,7 +133,7 @@ In this lab, you will configure a [probabilistic sampler](https://github.com/ope
       processors: [probabilistic_sampler, batch]
       exporters: [opensearch, debug]
 ```
-4. Restart the app by hitting `control + c` and then `docker compose up`.
+4. Restart the app by hitting `control + c` and then running `docker compose up`.
 5. After a few minutes, use the following query in your New Relic account: `SELECT count(*) FROM Log SINCE 2 minutes ago`. Note down the total (hint: it should be ~250). That difference in this result demonstrates the sampler at work! 
 
 ## Documentation
