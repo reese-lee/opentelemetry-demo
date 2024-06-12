@@ -35,7 +35,7 @@ After completing this workshop, you ~~hopefully will~~ should:
 
 ## The workshop labs
 
-These are the labs that we will be completing in this workshop. 
+These are the labs that you will be completing in this workshop. Each lab includes at least one task. 
 
 ### Lab 1 The OpenTelemetry Collector
 In this lab, you will:
@@ -84,7 +84,7 @@ Use this query to find spans that contain the custom attribute, `app.products_re
 As the PM for `recommendationservice`, you want to add a custom attribute to collect a filtered list of products to track what products are being recommended to your users.
 
 1. Open up the `recommendation_server.py` file.
-2. On line 111, add this code:
+2. On line 111, add this code (make sure it starts on the same indent as the previous line):
 ```yaml
 span.set_attribute("app.filtered_products.list", prod_list)
 ```
@@ -104,12 +104,12 @@ In this lab, you will configure a [probabilistic sampler](https://github.com/ope
 
 1. To see how many logs your app is currently sending, use the following query in your New Relic account: `SELECT count(*) FROM Log SINCE 2 minutes ago`. Note down the total (hint: it's likely over 1k). 
 2. In your codespace, open the following file: `src > otelcollector > otelcol-config.yml`. **Note that this is the base Collector configuration file, not the `extras` config file.**
-3. On line 39, add this configuration in the `processors` section:
+3. On line 39, add this configuration in the `processors` section (make sure it starts on the same indent as the previous line):
 ```yaml
   probabilistic_sampler:
     sampling_percentage: 15
 ```
-3. Add this sampler to your `logs` pipeline in the `services` section:
+3. In the `services` section, add the sampler to the array of processors in your `logs` pipeline. See the following third line (make sure you place it BEFORE the `batch` processor, because we want to sample the logs before they are batched):
 ```yaml
     logs:
       receivers: [otlp]
