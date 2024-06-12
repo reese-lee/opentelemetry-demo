@@ -107,7 +107,7 @@ def get_product_list(request_product_ids):
         indices = random.sample(range(num_products), num_return)
         # Fetch product ids from indices
         prod_list = [filtered_products[i] for i in indices]
-
+        # Add your custom span attribute on the following line, with the same indent as the hashtag
         
         
         return prod_list
